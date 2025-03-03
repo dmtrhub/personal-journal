@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalJournal.API", "PersonalJournal.API\PersonalJournal.API.csproj", "{AA91A72D-1D3F-48C6-AE28-504A5E67383E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{43C0B30F-331B-4621-A0ED-ED4BF277684A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{C84930C7-FDE0-4DAF-BADF-105E571376D9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AA91A72D-1D3F-48C6-AE28-504A5E67383E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA91A72D-1D3F-48C6-AE28-504A5E67383E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA91A72D-1D3F-48C6-AE28-504A5E67383E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA91A72D-1D3F-48C6-AE28-504A5E67383E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AA91A72D-1D3F-48C6-AE28-504A5E67383E} = {43C0B30F-331B-4621-A0ED-ED4BF277684A}
+	EndGlobalSection
+EndGlobal
