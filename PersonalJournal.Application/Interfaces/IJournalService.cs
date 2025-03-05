@@ -16,5 +16,9 @@ namespace PersonalJournal.Application.Interfaces
         Task<bool> UpdateJournalAsync(int id, JournalEntryRequestDto journalDto);
         Task<bool> DeleteJournalAsync(int id);
         Task<IEnumerable<JournalEntryResponseDto>> SearchUserJournalsAsync(string title);
+        Task<IEnumerable<JournalEntryResponseDto>> SearchJournalsByAdminAsync(string title);
+        Task<JournalEntryResponseDto?> GetJournalByAdminAsync(int id);
+        Task<IEnumerable<JournalEntryResponseDto>> GetAllJournalsAsync();
+        Task<bool> DeleteJournalByAdminAsync(int id);
     }
 }

@@ -63,6 +63,35 @@ namespace PersonalJournal.Application.Services
             return true;
         }
 
+        //---ADMIN METHODS---
+        public async Task<bool> DeleteJournalByAdminAsync(int id)
+        {
+            var journal = await _journalRepository.GetJournalEntryByIdAsync(id);
+            if (journal is null) return false;
+
+            await _journalRepository.DeleteJournalEntryAsync(journal);
+            return true;
+        }
+
+        public async Task<IEnumerable<JournalEntryResponseDto>> GetAllJournalsAsync()
+        {
+            var journals = await _journalRepository.GetJournalEntriesAsync();
+            return journals.Select(j => j.ToDto()).ToList();
+        }
+
+        public async Task<JournalEntryResponseDto?> GetJournalByAdminAsync(int id)
+        {
+            var journal = await _journalRepository.GetJournalEntryByIdAsync(id);
+            return journal?.ToDto();
+        }
+
+        public async Task<IEnumerable<JournalEntryResponseDto>> SearchJournalsByAdminAsync(string title)
+        {
+            var journals = await _journalRepository.SearchJournalsByTitleAsync(title);
+            return journals.Select(j => j.ToDto()).ToList();
+        }
+        //---END ADMIN METHODS---
+
         private int GetCurrentUserId()
         {
             var userIdClaim = _httpContextAccessor.HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier)

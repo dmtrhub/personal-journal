@@ -11,6 +11,5 @@ namespace PersonalJournal.Application.Interfaces
     {
         Task<UserDto?> RegisterAsync(RegisterDto dto);
         Task<string?> LoginAsync(LoginDto dto);
-        Task<UserDto?> GetUserById(int id);
     }
 }

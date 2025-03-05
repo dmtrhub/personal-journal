@@ -22,6 +22,6 @@ namespace PersonalJournal.Application.Mappings
 
 
         public static UserDto ToDto(this User user) =>
-            new(user.Id, user.FirstName, user.LastName, user.Username, user.Email);
+            new(user.Id, user.FirstName, user.LastName, user.Username, user.Email, user.Role);
     }
 }

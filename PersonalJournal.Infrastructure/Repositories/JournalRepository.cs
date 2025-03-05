@@ -27,23 +27,11 @@ namespace PersonalJournal.Infrastructure.Repositories
             await _context.SaveChangesAsync();
         }
 
-        //admin
-        public async Task<IEnumerable<JournalEntry>> GetJournalEntriesAsync() =>
-            await _context.JournalEntries.ToListAsync();
-
         public async Task<IEnumerable<JournalEntry>> GetJournalEntriesByUserAsync(int userId) =>
             await _context.JournalEntries.Where(j => j.UserId == userId).ToListAsync();
 
         public async Task<JournalEntry?> GetJournalEntryByUserAsync(int userId, int id) =>
             await _context.JournalEntries.Where(j => j.UserId == userId && j.Id == id).FirstOrDefaultAsync();
-
-        //admin
-        public async Task<JournalEntry?> GetJournalEntryByIdAsync(int id) =>
-            await _context.JournalEntries.FindAsync(id);
-
-        //admin
-        public async Task<IEnumerable<JournalEntry>> SearchJournalsByTitleAsync(string title) =>
-            await _context.JournalEntries.Where(j => j.Title.Contains(title)).ToListAsync();
 
         public async Task<IEnumerable<JournalEntry>> SearchUserJournalsByTitleAsync(int userId ,string title) =>
             await _context.JournalEntries.Where(j => j.Title.Contains(title) && j.UserId == userId).ToListAsync();
@@ -53,5 +41,16 @@ namespace PersonalJournal.Infrastructure.Repositories
             _context.JournalEntries.Update(journalEntry);
             await _context.SaveChangesAsync();
         }
+
+        //ADMIN
+        public async Task<IEnumerable<JournalEntry>> GetJournalEntriesAsync() =>
+            await _context.JournalEntries.ToListAsync();
+
+        public async Task<JournalEntry?> GetJournalEntryByIdAsync(int id) =>
+            await _context.JournalEntries.FindAsync(id);
+
+        public async Task<IEnumerable<JournalEntry>> SearchJournalsByTitleAsync(string title) =>
+            await _context.JournalEntries.Where(j => j.Title.Contains(title)).ToListAsync();
+        //ADMIN
     }
 }

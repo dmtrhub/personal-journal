@@ -33,13 +33,6 @@ namespace PersonalJournal.API.Controllers
                 return BadRequest("Invalid email or password.");
 
             return Ok(tokens);
-        }
-
-        [HttpGet("user/{id}")]
-        public async Task<ActionResult<UserDto>> GetUserById(int id)
-        {
-            var user = await _authService.GetUserById(id);
-            return user is not null ? Ok(user) : NotFound($"User with ID {id} not found.");
-        }
+        }       
     }
 }

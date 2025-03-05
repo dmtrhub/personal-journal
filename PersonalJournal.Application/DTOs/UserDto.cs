@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace PersonalJournal.Application.DTOs
 {
-    public record UserDto(int Id, string FirstName, string LastName, string Username, string Email);
+    public record UserDto(int Id, string FirstName, string LastName, string Username, string Email, string Role);
 }

@@ -73,6 +73,7 @@ builder.Services.AddScoped<IJournalRepository, JournalRepository>();
 builder.Services.AddScoped<IJournalService, JournalService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 builder.Services.AddValidatorsFromAssemblyContaining<JournalEntryRequestValidator>();
 builder.Services.AddValidatorsFromAssemblyContaining<LoginValidator>();

@@ -24,9 +24,6 @@ namespace PersonalJournal.Application.Services
             _passwordHasher = passwordHasher;
         }
 
-        public async Task<UserDto?> GetUserById(int id) =>
-            await _userRepository.GetByIdAsync(id) is User user ? user.ToDto() : null;
-
         public async Task<string?> LoginAsync(LoginDto dto)
         {
             var user = await _userRepository.GetByEmailAsync(dto.Email);
@@ -55,7 +52,8 @@ namespace PersonalJournal.Application.Services
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Name, user.Username),
-                new Claim(ClaimTypes.Email, user.Email)
+                new Claim(ClaimTypes.Email, user.Email),
+                new Claim(ClaimTypes.Role, user.Role)
             };
 
             var key = new SymmetricSecurityKey(
