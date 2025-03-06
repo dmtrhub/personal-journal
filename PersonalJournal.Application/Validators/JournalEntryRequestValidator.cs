@@ -13,7 +13,7 @@ namespace PersonalJournal.Application.Validators
 
             RuleFor(j => j.Content)
                 .NotEmpty().WithMessage("Content is required.")
-                .MinimumLength(500).WithMessage("Content must be at least 500 characters.");
+                .MinimumLength(10).WithMessage("Content must be at least 10 characters.");
         }
     }
 }

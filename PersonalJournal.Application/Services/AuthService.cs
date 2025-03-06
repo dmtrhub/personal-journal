@@ -24,14 +24,14 @@ namespace PersonalJournal.Application.Services
             _passwordHasher = passwordHasher;
         }
 
-        public async Task<string?> LoginAsync(LoginDto dto)
+        public async Task<TokenDto?> LoginAsync(LoginDto dto)
         {
             var user = await _userRepository.GetByEmailAsync(dto.Email);
             if(user is null ||
                 _passwordHasher.VerifyHashedPassword(user, user.PasswordHash, dto.Password) == PasswordVerificationResult.Failed)
                     return null;
 
-            return CreateToken(user);
+            return new TokenDto(CreateToken(user), user.Role);
         }
 
         public async Task<UserDto?> RegisterAsync(RegisterDto dto)

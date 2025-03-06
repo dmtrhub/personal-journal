@@ -28,6 +28,10 @@ namespace PersonalJournal.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(JournalEntryRequestDto dto)
         {
+            if (dto == null)
+            {
+                return BadRequest("Request body is missing or invalid!");
+            }
             var journal = await _journalService.AddJournalAsync(dto);
             return CreatedAtAction(nameof(GetById), new { id = journal.Id }, journal);
         }

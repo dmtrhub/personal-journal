@@ -26,13 +26,13 @@ namespace PersonalJournal.API.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<string>> Login(LoginDto dto)
+        public async Task<ActionResult<TokenDto>> Login(LoginDto dto)
         {
-            var tokens = await _authService.LoginAsync(dto);
-            if (tokens is null)
+            var token = await _authService.LoginAsync(dto);
+            if (token is null)
                 return BadRequest("Invalid email or password.");
 
-            return Ok(tokens);
+            return Ok(token);
         }       
     }
 }

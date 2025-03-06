@@ -17,8 +17,15 @@ namespace PersonalJournal.Infrastructure.Repositories
 
         public async Task AddJournalEntryAsync(JournalEntry journalEntry)
         {
-            await _context.JournalEntries.AddAsync(journalEntry);
-            await _context.SaveChangesAsync();
+            try
+            {
+                await _context.JournalEntries.AddAsync(journalEntry);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error saving journal entry: {ex.Message}");
+            }
         }
 
         public async Task DeleteJournalEntryAsync(JournalEntry journalEntry)

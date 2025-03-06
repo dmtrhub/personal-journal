@@ -10,6 +10,6 @@ namespace PersonalJournal.Application.Interfaces
     public interface IAuthService
     {
         Task<UserDto?> RegisterAsync(RegisterDto dto);
-        Task<string?> LoginAsync(LoginDto dto);
+        Task<TokenDto?> LoginAsync(LoginDto dto);
     }
 }

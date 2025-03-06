@@ -22,6 +22,11 @@ namespace PersonalJournal.Application.Services
             var journal = journalDto.AddDomain(GetCurrentUserId());
 
             await _journalRepository.AddJournalEntryAsync(journal);
+
+            if (journal == null)
+            {
+                throw new Exception("Journal entry was not created successfully.");
+            }
             return journal.ToDto();
         }
 
@@ -94,10 +99,15 @@ namespace PersonalJournal.Application.Services
 
         private int GetCurrentUserId()
         {
-            var userIdClaim = _httpContextAccessor.HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier)
-                ?? throw new UnauthorizedAccessException("User not authenticated.");
+            var userId = _httpContextAccessor.HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
-            return int.Parse(userIdClaim.Value);
+            if (string.IsNullOrEmpty(userId))
+            {
+                throw new UnauthorizedAccessException("User ID is not found in the token.");
+            }
+
+            return int.Parse(userId);
         }
+
     }
 }
